@@ -68,6 +68,7 @@ const AddPatient = () => {
         <button type="submit">Save Patient</button>
       </form>
       {message && <p>{message}</p>}
+      Link to <a href="/">Home</a>
     </div>
   );
 };

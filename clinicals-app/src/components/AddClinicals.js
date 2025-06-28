@@ -35,6 +35,8 @@ const AddClinicals = () => {
       <p><strong>First Name:</strong> {patient.firstName}</p>
       <p><strong>Last Name:</strong> {patient.lastName}</p>
       <p><strong>Age:</strong> {patient.age}</p>
+      
+      <a href="/">Back to Home</a>
     </div>
   );
 };
