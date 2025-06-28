@@ -1,8 +1,73 @@
+import React, { useState } from 'react';
+import axios from 'axios';
 
-function AddPatient() {
+const AddPatient = () => {
+  const [patient, setPatient] = useState({
+    firstName: '',
+    lastName: '',
+    age: ''
+  });
+
+  const [message, setMessage] = useState('');
+
+  const handleChange = (e) => {
+    setPatient({
+      ...patient,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:8080/api/patients', patient);
+      setMessage('Patient saved successfully!');
+      setPatient({ firstName: 'firstName', lastName: 'lastName', age: 'age' });
+    } catch (error) {
+      setMessage('Error saving patient.');
+    }
+  };
+
   return (
-    <b>Add Patient</b>
+    <div>
+      <h2>Add Patient</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>First Name:</label>
+          <input
+            type="text"
+            name="firstName"
+            value={patient.firstName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Last Name:</label>
+          <input
+            type="text"
+            name="lastName"
+            value={patient.lastName}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Age:</label>
+          <input
+            type="number"
+            name="age"
+            value={patient.age}
+            onChange={handleChange}
+            required
+            min="0"
+          />
+        </div>
+        <button type="submit">Save Patient</button>
+      </form>
+      {message && <p>{message}</p>}
+    </div>
   );
-}
+};
 
 export default AddPatient;
