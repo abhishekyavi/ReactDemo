@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const AddPatient = () => {
   const [patient, setPatient] = useState({
@@ -23,6 +24,7 @@ const AddPatient = () => {
       await axios.post('http://localhost:8080/api/patients', patient);
       setMessage('Patient saved successfully!');
       setPatient({ firstName: 'firstName', lastName: 'lastName', age: 'age' });
+      toast.success('Patient saved successfully!');
     } catch (error) {
       setMessage('Error saving patient.');
     }

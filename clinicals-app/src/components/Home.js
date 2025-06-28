@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+
 const Home = () => {
   const [patients, setPatients] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -38,10 +39,14 @@ const Home = () => {
         <tbody>
           {patients.map(patient => (
             <tr key={patient.id}>
-              <td>{patient.id}</td>
+              <td>{patient.id}</td>   
               <td>{patient.firstName}</td>
               <td>{patient.lastName}</td>
               <td>{patient.age}</td>
+              <td>
+                <Link to={`/AddClinicals/${patient.id}`}>Add Clinicals data</Link>
+              </td>
+              
             </tr>
           ))}
         </tbody>
