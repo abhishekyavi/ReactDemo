@@ -36,3 +36,34 @@
     transform: rotate(360deg);
   }
 }
+
+table  {
+  width: 100%;
+  border-collapse: collapse;
+}
+th {
+  border: 1px solid #822222;
+  padding-top: 12px;
+  padding: 12px;
+  background-color: #2c8222;
+}
+tr:nth-child(even) {
+  background-color: #eeeaf2;
+}
+tr:hover {
+  background-color: #dcc4ec;
+}
+input[type="text"] {
+  width: 60%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: content-box
+}
+button {
+  background-color: #2c8222;
+  color: white;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+}

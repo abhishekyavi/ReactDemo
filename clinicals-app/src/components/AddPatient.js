@@ -21,7 +21,7 @@ const AddPatient = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://my-app-abhishek1426-dev.apps.rm3.7wse.p1.openshiftapps.com/api/patients', patient);
+      await axios.post('/api/patients', patient);
       setMessage('Patient saved successfully!');
       setPatient({ firstName: '', lastName: '', age: '' });
       toast.success('Patient saved successfully!');

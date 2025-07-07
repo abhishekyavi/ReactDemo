@@ -9,7 +9,7 @@ const AddClinicals = () => {
   useEffect(() => {
     if (patientId) {
       console.log('Fetching patient with ID:', patientId);
-      axios.get(`http://my-app-abhishek1426-dev.apps.rm3.7wse.p1.openshiftapps.com/api/patients/${patientId}`)
+      axios.get(`/api/patients/${patientId}`)
         .then(response => setPatient(response.data))
         .catch(error => console.error('Error fetching patient:', error));
     }
@@ -37,6 +37,41 @@ const AddClinicals = () => {
       <p><strong>Age:</strong> {patient.age}</p>
       
       <a href="/">Back to Home</a>
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
+          const componentName = e.target.componentName.value;
+          const componentValue = e.target.componentValue.value;
+          try {
+            await axios.post('/api/clinicaldata', {
+             
+              "componentName" :componentName,
+              "componentValue":componentValue,
+               patient:{
+                id: patientId
+               }
+            });
+            alert('Clinical data saved successfully!');
+          } catch (error) {
+            alert('Error saving clinical data.');
+            console.error(error);
+          }
+        }}
+      >
+        <div>
+          <label>
+            Component Name:
+            <input type="text" name="componentName" required />
+          </label>
+        </div>
+        <div>
+          <label>
+            Component Value:
+            <input type="text" name="componentValue" required />
+          </label>
+        </div>
+        <button type="submit">Save Clinical Data</button>
+      </form>
       
     </div>
   );

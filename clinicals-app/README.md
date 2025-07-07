@@ -1,6 +1,55 @@
-# Getting Started with Create React App
+# Clinicals App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React application for managing patient clinical data, bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+# 1.st step: to run in codespaces
+go to clinicals-app directory and run the following command:
+npm install
+npm start.
+
+```bash
+
+## Features
+
+- View patient details
+- Add new patients
+- Add clinical data for patients
+- Responsive table layout
+
+## Backend Integration
+
+This app connects to a backend API hosted at: `http://my-app-abhishek1426-dev.apps.rm3.7wse.p1.openshiftapps.com`
+
+## CORS Issue and Solution
+
+### Problem
+When making API calls to the external backend server, we encountered a CORS (Cross-Origin Resource Sharing) error:
+
+```
+A cross-origin resource sharing (CORS) request was blocked because of invalid or missing response headers of the request or the associated preflight request.
+```
+
+### Solution
+We fixed this issue by implementing a proxy configuration in the React development environment:
+
+
+****did this chnage to solve the CORS issue in codespaces****
+
+
+1. **Added proxy configuration** to `package.json`:  (change this url to latest spring boot app url)
+   ```json
+   "proxy": "http://my-app-abhishek1426-dev.apps.rm3.7wse.p1.openshiftapps.com"
+   ```
+
+2. **Updated all API calls** to use relative URLs instead of absolute URLs:
+   - Changed from: `axios.get('http://my-app-abhishek1426-dev.apps.rm3.7wse.p1.openshiftapps.com/api/patients')`
+   - To: `axios.get('/api/patients')`
+
+### How it works
+- The proxy tells the React development server to forward API requests to the backend server
+- Since requests now appear to come from the same origin, CORS restrictions don't apply
+- This solution works for development; for production, ensure proper CORS headers are configured on the backend
 
 ## Available Scripts
 
@@ -27,44 +76,3 @@ It correctly bundles React in production mode and optimizes the build for the be
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

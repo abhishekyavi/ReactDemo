@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import Test from './Test';
 
 
 const Home = () => {
@@ -9,7 +10,7 @@ const Home = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('http://my-app-abhishek1426-dev.apps.rm3.7wse.p1.openshiftapps.com/api/patients')
+    axios.get('/api/patients')
       .then(response => {
         setPatients(response.data);
         setLoading(false);
@@ -25,14 +26,17 @@ const Home = () => {
 
   return (
     <div>
-      <h2>Patient Details</h2>
-      <table border="1" cellPadding="8">
+      
+      <h2 >Patient Details</h2>
+      <table align='center' border="1" cellPadding="8">
         <thead>
           <tr>
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Age</th>
+            <th>Action</th>
+            <th>Delete</th>
            
           </tr>
         </thead>
@@ -45,6 +49,9 @@ const Home = () => {
               <td>{patient.age}</td>
               <td>
                 <Link to={`/AddClinicals/${patient.id}`}>Add Clinicals data</Link>
+              </td>
+              <td>
+                <Link to={`/Delete/${patient.id}`}>Delete</Link>
               </td>
               
             </tr>

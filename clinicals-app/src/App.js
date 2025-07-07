@@ -6,6 +6,7 @@ import AddClinicals from './components/AddClinicals';
 import { ToastContainer} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Test from './components/Test';
+import Delete from './components/Delete';
 
 
 function App() {
@@ -14,6 +15,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/Test/:id" element={<Test/>} />
+          <Route path="/Delete/:id" element={<Delete/>} />
           <Route path="/AddPatient" element={<AddPatient />} />
           <Route path="/AddPatient/:id" element={<AddPatient />} />
           <Route path="/AddClinicals/:id" element={<AddClinicals />} />
