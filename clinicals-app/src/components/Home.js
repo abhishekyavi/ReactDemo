@@ -9,7 +9,7 @@ const Home = () => {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:8080/api/patients')
+    axios.get('http://my-app-abhishek1426-dev.apps.rm3.7wse.p1.openshiftapps.com/api/patients')
       .then(response => {
         setPatients(response.data);
         setLoading(false);

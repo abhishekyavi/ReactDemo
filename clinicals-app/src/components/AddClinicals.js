@@ -9,7 +9,7 @@ const AddClinicals = () => {
   useEffect(() => {
     if (patientId) {
       console.log('Fetching patient with ID:', patientId);
-      axios.get(`http://localhost:8080/api/patients/${patientId}`)
+      axios.get(`http://my-app-abhishek1426-dev.apps.rm3.7wse.p1.openshiftapps.com/api/patients/${patientId}`)
         .then(response => setPatient(response.data))
         .catch(error => console.error('Error fetching patient:', error));
     }
@@ -37,6 +37,7 @@ const AddClinicals = () => {
       <p><strong>Age:</strong> {patient.age}</p>
       
       <a href="/">Back to Home</a>
+      
     </div>
   );
 };
